@@ -1,0 +1,27 @@
+.footer {
+  padding: 0 45px;
+  padding-bottom: 40px;
+
+  &-content {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  &-logo {
+    line-height: 0;
+    margin-right: 40px;
+  }
+
+  &-create {
+    align-items: center;
+
+    &-logo {
+      align-items: center;
+    }
+
+    &-img {
+      margin: 0 5px;
+    }
+  }
+}

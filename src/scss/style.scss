@@ -4,6 +4,9 @@
 @import "./base/grid.scss";
 @import "./base/mixin.scss";
 
+// fonts
+@import "fonts.scss";
+
 /* layout */
 @import "./layout/inc-header.scss";
 @import "./layout/inc-footer.scss";
@@ -32,9 +35,9 @@ body {
   min-height: 100%;
   font-family: $baseFont;
   font-weight: 400;
-  font-size: rem(16px);
+  font-size: 16px;
   line-height: 1.42;
-  color: #000;
+  color: #1D1D1D;
   background-color: #fff;
 }
 
@@ -47,6 +50,10 @@ body {
   overflow: hidden;
   min-height: 100%;
   min-width: 100%;
+}
+
+.page-wrapper {
+  margin-bottom: 42px;
 }
 
 #middle {

@@ -1,0 +1,51 @@
+.header {
+  padding-top: 45px;
+  margin-bottom: 130px;
+
+  &-content {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  &-logo {
+    line-height: 0;
+  }
+
+  &-menu {
+    &-phone {
+      display: inline-block;
+      margin-right: 62px;
+      padding-left: 30px;
+      position: relative;
+
+      &::before {
+        content: '';
+        background-image: url('../images/icon/phone.svg');
+        background-repeat: no-repeat;
+        background-size: 20px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        top: 4px;
+      }
+    }
+
+    ul, li {
+      display: inline-block;
+    }
+
+    ul {
+      margin-bottom: 0;
+    }
+
+    li {
+      margin-right: 56px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
