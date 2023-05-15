@@ -1,9 +1,4 @@
 window.addEventListener("DOMContentLoaded", () => {
-  if(document.getElementById('demo6')) {
-    var demo6 = new CircleType(document.getElementById('demo6'))
-      .radius(110);
-  }
-
   let btnForm = document.querySelector('.map-contact-btn')
 
   if(btnForm) {
@@ -76,5 +71,28 @@ window.addEventListener("DOMContentLoaded", () => {
         });
       }
     })
+  }
+
+  const anchors = document.querySelectorAll('.ui-more a')
+
+  function blockTo(className) {
+    for (let anchor of anchors) {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault()
+
+        let target = e.target.closest('a')
+        let arr = target.classList;
+        let id = Array.from(arr).filter(word => word == className)
+
+        document.getElementById(id[0]).scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        })
+      })
+    }
+  }
+
+  if (anchors.length) {
+    blockTo("more-trade")
   }
 })
