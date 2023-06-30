@@ -3,8 +3,16 @@
 <div class="middle" id="middle">
   <div class="container">
     <div class="basic">
-      <div class="mask">
+      <!-- <div class="mask">
         <div class="mask-txt">VANDO</div>
+      </div> -->
+
+      <div class="basic-text flex">
+        <span id="v" class="letter">V</span>
+        <span id="a" class="letter">A</span>
+        <span id="n" class="letter">N</span>
+        <span id="d" class="letter">D</span>
+        <span id="o" class="letter">O</span>
       </div>
 
       <div class="basic-desc flex">
@@ -66,7 +74,7 @@
       </div>
     </div>
 
-    <div class="delivery">
+    <div class="delivery" id="delivery">
       <div class="mask2">
         <img src="./images/bg/mask.png" alt="Cinque Terre">
       </div>
@@ -99,168 +107,182 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="map" id="contact">
+    <div class="container">
+      <div class="map-contact">
+        <div class="map-contact-name">VandO Sp.z.o.o.</div>
 
-    <div class="map">
-        <div class="map-contact">
-          <div class="map-contact-name">VandO Sp.z.o.o.</div>
+        <div class="map-contact-info">
+          <div class="map-contact-txt">Kraków, ul. Grundwalzka, 10/1, 31-526, Polska</div>
 
-          <div class="map-contact-info">
-            <div class="map-contact-txt">Kraków, ul. Grundwalzka, 10/1, 31-526, Polska</div>
+          <div class="map-contact-txt">+48 565-557-292</div>
 
-            <div class="map-contact-txt">+48 565-557-292</div>
-
-            <div class="map-contact-txt"><a href="#">contact@vando-cargo.pl</a></div>
-          </div>
-
-          <button class="map-contact-btn">Написать нам</button>
+          <div class="map-contact-txt"><a href="#">contact@vando-cargo.pl</a></div>
         </div>
 
-        <div class="map-form">
-          <div class="map-form-title">Напишите нам</div>
+        <button class="map-contact-btn">Написать нам</button>
+      </div>
 
-          <div class="map-form-block">
-            <form action="#" class="form-validate">
-              <div class="map-form-fields">
-                <div class="map-form-field">
-                  <input type="text" placeholder="Ваше имя" name="name" id="name">
-                </div>
+      <div class="map-form">
+        <div class="map-form-title">Напишите нам</div>
 
-                <div class="map-form-field">
-                  <input type="text" placeholder="Номер телефона" name="phone" id="phone">
-                </div>
-
-                <div class="map-form-field">
-                  <textarea rows="3" placeholder="Сообщение" name="msg" id="msg"></textarea>
-                </div>
+        <div class="map-form-block">
+          <form action="#" class="form-validate">
+            <div class="map-form-fields">
+              <div class="map-form-field">
+                <input type="text" placeholder="Ваше имя" name="name" id="name">
               </div>
 
-              <button class="map-form-btn">Отправить</button>
-            </form>
+              <div class="map-form-field">
+                <input type="text" placeholder="Номер телефона" name="phone" id="phone">
+              </div>
 
-            <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                jQuery(document).ready(function ($) {
-                  $(".form-validate").validate({
-                    errorElement: "span",
+              <div class="map-form-field">
+                <textarea rows="3" placeholder="Сообщение" name="msg" id="msg"></textarea>
+              </div>
+            </div>
 
-                    rules: {
-                      name: {
-                        required: true,
-                        lettersonly: true,
-                      },
+            <button class="map-form-btn">Отправить</button>
+          </form>
 
-                      phone: {
-                        required: true,
-                        phone: true,
-                      },
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              jQuery(document).ready(function ($) {
+                $(".form-validate").validate({
+                  errorElement: "span",
 
-                      msg: {
-                        required: true,
-                      },
+                  rules: {
+                    name: {
+                      required: true,
+                      lettersonly: true,
                     },
-                  });
-                })
-              });
-            </script>
-        </div>
 
-        <button class="map-form-close"><img src="./images/icon/close.svg" alt="alt"></button>
-        </div>
+                    phone: {
+                      required: true,
+                      phone: true,
+                    },
 
-        <div id="map" class="contact-map"></div>
-
-        <script>
-          window.addEventListener("DOMContentLoaded", (event) => {
-            $( document ).ready(function() {
-              function mapContactInit() {
-                var styles = [
-                  {
-                    "featureType": "all",
-                    "elementType": "all",
-                    "stylers": [
-                      {"saturation": -90},
-                      {"gamma": 1.3},
-                      {"lightness": 10},
-                      {"visibility": "simplified"}
-                    ]
-                  }
-                ];
-
-                var mapOptions = {
-                  zoom: 17,
-                  center: new google.maps.LatLng(54.374013, 18.623630),
-                  mapTypeId: 'map_style',
-                  mapTypeControl:false,
-                  scrollwheel: false,
-                  zoomControl: true,
-                  scaleControl:false,
-                  disableDefaultUI: true,
-
-                  navigationControlOptions: {
-                    style: google.maps.NavigationControlStyle.SMALL
+                    msg: {
+                      required: true,
+                    },
                   },
+
+                  submitHandler: function (form) {
+                    const formPopup = document.querySelector('.map-form')
+                    const contactPopup = document.querySelector('.map-contact')
+                    const bg = document.querySelector('.bg')
+
+                    bg.remove()
+
+                    formPopup.classList.remove('active')
+                    contactPopup.classList.remove('hidden')
+
+                    showPopup('./popup/success.html')
+                  },
+                });
+              })
+            });
+          </script>
+      </div>
+
+      <button class="map-form-close"><img src="./images/icon/close.svg" alt="alt"></button>
+      </div>
+    </div>
+
+      <div id="map" class="contact-map"></div>
+
+      <script>
+        window.addEventListener("DOMContentLoaded", (event) => {
+          $( document ).ready(function() {
+            function mapContactInit() {
+              var styles = [
+                {
+                  "featureType": "all",
+                  "elementType": "all",
+                  "stylers": [
+                    {"saturation": -90},
+                    {"gamma": 1.3},
+                    {"lightness": 10},
+                    {"visibility": "simplified"}
+                  ]
                 }
+              ];
 
-                map = new google.maps.Map(document.getElementById('map'), mapOptions);
+              var mapOptions = {
+                zoom: 17,
+                center: new google.maps.LatLng(54.374013, 18.623630),
+                mapTypeId: 'map_style',
+                mapTypeControl:false,
+                scrollwheel: false,
+                zoomControl: true,
+                scaleControl:false,
+                disableDefaultUI: true,
 
-                var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
-                map.mapTypes.set('map_style', styledMap);
-
-                let myLatLng = new google.maps.LatLng(54.374800, 18.618860);
-                let markerImage = new google.maps.MarkerImage(
-                  './images/icon/map-marker.svg',
-                  new google.maps.Size(80, 110),
-                  new google.maps.Point(0, 0),
-                  new google.maps.Point(25, 50),
-                  new google.maps.Size(80, 110)
-                );
-
-                marker = new google.maps.Marker({
-                  position: myLatLng,
-                  map: map,
-                  icon: markerImage,
-                  title: 'marker'
-                });
-
-                $(window).on('load resize', function() {
-                  if ($(window).width() <= 1024) {
-                    let markerPosition = marker.getPosition();
-                    map.setCenter(markerPosition);
-
-                    let markerImage = new google.maps.MarkerImage(
-                      './images/icon/map-marker.svg',
-                      new google.maps.Size(40, 55),
-                      new google.maps.Point(0, 0),
-                      new google.maps.Point(12.5, 25),
-                      new google.maps.Size(40, 55)
-                    );
-
-                    marker.setIcon(markerImage);
-                  } else {
-                    let markerImage = new google.maps.MarkerImage(
-                      './images/icon/map-marker.svg',
-                      new google.maps.Size(80, 110),
-                      new google.maps.Point(0, 0),
-                      new google.maps.Point(25, 50),
-                      new google.maps.Size(80, 110)
-                    );
-                    marker.setIcon(markerImage);
-
-                    let myLatLng = new google.maps.LatLng(54.374013, 18.623630);
-                    map.setCenter(myLatLng);
-                  }
-                });
+                navigationControlOptions: {
+                  style: google.maps.NavigationControlStyle.SMALL
+                },
               }
 
-              jQuery(document).ready(function($) {
-                if ($('.contact-map')[0]) {
-                  mapContactInit();
+              map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+              var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+              map.mapTypes.set('map_style', styledMap);
+
+              let myLatLng = new google.maps.LatLng(54.374800, 18.618860);
+              let markerImage = new google.maps.MarkerImage(
+                './images/icon/map-marker.svg',
+                new google.maps.Size(80, 110),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(25, 50),
+                new google.maps.Size(80, 110)
+              );
+
+              marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                icon: markerImage,
+                title: 'marker'
+              });
+
+              $(window).on('load resize', function() {
+                if ($(window).width() <= 1024) {
+                  let markerPosition = marker.getPosition();
+                  map.setCenter(markerPosition);
+
+                  let markerImage = new google.maps.MarkerImage(
+                    './images/icon/map-marker.svg',
+                    new google.maps.Size(40, 55),
+                    new google.maps.Point(0, 0),
+                    new google.maps.Point(12.5, 25),
+                    new google.maps.Size(40, 55)
+                  );
+
+                  marker.setIcon(markerImage);
+                } else {
+                  let markerImage = new google.maps.MarkerImage(
+                    './images/icon/map-marker.svg',
+                    new google.maps.Size(80, 110),
+                    new google.maps.Point(0, 0),
+                    new google.maps.Point(25, 50),
+                    new google.maps.Size(80, 110)
+                  );
+                  marker.setIcon(markerImage);
+
+                  let myLatLng = new google.maps.LatLng(54.374013, 18.623630);
+                  map.setCenter(myLatLng);
                 }
               });
+            }
+
+            jQuery(document).ready(function($) {
+              if ($('.contact-map')[0]) {
+                mapContactInit();
+              }
             });
           });
-        </script>
-    </div>
+        });
+      </script>
   </div>
 
 <!--#include file="inc-footer.html"-->
